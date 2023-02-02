@@ -3,6 +3,7 @@ package com.example.bookapi.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,7 +39,7 @@ public class BookController {
         mockBookService.setNextId(mockBookService.getNextId() + 1);
     }
 
-    @RequestMapping("/{id}")
+    @GetMapping("/{id}")
     public Book getBook(@PathVariable Long id){
         for (Book b : mockBookService.getList()){
             if (b.getId() == id){
@@ -54,6 +55,17 @@ public class BookController {
         for (Book b : list){
             if (b.getId() == book.getId()){
                 list.set(list.indexOf(b), book);
+            }
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteBook(@PathVariable Long id){
+        List<Book> list = mockBookService.getList();
+        for (Book b : list){
+            if (b.getId() == id){
+                list.remove(b);
+                break;
             }
         }
     }
