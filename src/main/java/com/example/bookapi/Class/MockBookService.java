@@ -3,8 +3,12 @@ package com.example.bookapi.Class;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class MockBookService {
     private List<Book> list;
+    private Long nextId = 4L;
 
     public MockBookService() {
         list = new ArrayList<>();
@@ -25,5 +29,13 @@ public class MockBookService {
 
     public void setList(List<Book> list) {
         this.list = list;
+    }
+
+    public Long getNextId() {
+        return nextId;
+    }
+
+    public void setNextId(Long nextId) {
+        this.nextId = nextId;
     }
 }
