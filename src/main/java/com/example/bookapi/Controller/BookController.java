@@ -66,7 +66,7 @@ public class BookController {
             if (b.getId() == id){
                 list.remove(b);
                 break;
-            }
+            }   
         }
     }
 }
